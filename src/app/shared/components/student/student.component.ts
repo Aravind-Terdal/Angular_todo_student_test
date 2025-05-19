@@ -69,6 +69,8 @@ export class StudentComponent implements OnInit {
           studentId: this.editId,
         };
         this._studentService.upDateStudent(upDateStudent);
+        this.studentForm.reset();
+        this.isInEditMode = false;
         this._snackBar.openSnackBar(
           `New Student ${upDateStudent.fullName} updated successfully`
         );
