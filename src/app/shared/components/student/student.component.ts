@@ -4,6 +4,7 @@ import { StudentService } from '../../services/student.service';
 import { UuidService } from '../../services/uuid.service';
 import { Istudent } from '../../models/student';
 import { validationsPatterns } from '../../validators/validators';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-student',
@@ -16,7 +17,8 @@ export class StudentComponent implements OnInit {
   editId!: string;
   constructor(
     private _studentService: StudentService,
-    private _uuidService: UuidService
+    private _uuidService: UuidService,
+    private _snackBar: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -58,12 +60,19 @@ export class StudentComponent implements OnInit {
           studentId: this._uuidService.generateUuid(),
         };
         this._studentService.createStudent(stdObj);
+        this._snackBar.openSnackBar(
+          `New Student ${stdObj.fullName} created successfully`
+        );
       } else {
         let upDateStudent: Istudent = {
           ...this.studentForm.value,
           studentId: this.editId,
         };
         this._studentService.upDateStudent(upDateStudent);
+        this._snackBar.openSnackBar(
+          `New Student ${upDateStudent.fullName} updated successfully`
+        );
+
         this.studentForm.reset();
         this.isInEditMode = false;
       }
