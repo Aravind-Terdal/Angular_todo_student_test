@@ -15,7 +15,7 @@ export class StudentlistComponent implements OnInit {
   constructor(
     private _studentService: StudentService,
     private _matDialog: MatDialog,
-    private _snackBar : SnackbarService
+    private _snackBar: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +29,7 @@ export class StudentlistComponent implements OnInit {
     let matDialogConfig = new MatDialogConfig();
     matDialogConfig.width = '600px';
     matDialogConfig.disableClose = true;
+    matDialogConfig.data = `Are you sure you want to remove ${student.fullName}`;
     let matDialogRef = this._matDialog.open(
       GetConfirmComponent,
       matDialogConfig
@@ -36,7 +37,7 @@ export class StudentlistComponent implements OnInit {
     matDialogRef.afterClosed().subscribe((res) => {
       if (res === true) {
         this._studentService.removeStudent(student);
-        this._snackBar.openSnackBar(`${student.fullName} removed successfully`)
+        this._snackBar.openSnackBar(`${student.fullName} removed successfully`);
       }
     });
   }

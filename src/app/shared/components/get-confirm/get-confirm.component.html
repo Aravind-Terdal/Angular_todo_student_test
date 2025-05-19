@@ -1,5 +1,7 @@
-<p>Are you sure you want to remove ?</p>
+<p>{{ getMsg }}</p>
 <div class="button d-flex justify-content-between">
-  <button (click)="onRemove(true)" mat-raised-button color="primary">Yes</button>
+  <button (click)="onRemove(true)" mat-raised-button color="primary">
+    Yes
+  </button>
   <button (click)="onRemove(false)" mat-raised-button color="warn">No</button>
 </div>
