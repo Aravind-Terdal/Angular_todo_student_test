@@ -1,0 +1,52 @@
+<ng-container *ngIf="studentData.length; else noStd">
+  <div class="row my-4">
+    <div class="col-md-12">
+      <h1 class="text-center"><strong>Student List</strong></h1>
+      <div class="table-responsive">
+        <table class="table tabel-bordered">
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <th>Edit</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of studentData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ student.fullName }}</td>
+              <td>{{ student.lastName }}</td>
+              <td>{{ student.email }}</td>
+              <td>{{ student.contact }}</td>
+              <td>
+                <button
+                  (click)="onEdit(student)"
+                  mat-raised-button
+                  color="primary"
+                >
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+              <td>
+                <button
+                  (click)="onRemove(student)"
+                  mat-raised-button
+                  color="warn"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #noStd>
+  <P class="alert alert-info my-4">No Student Available</P>
+</ng-template>

@@ -1,0 +1,137 @@
+<div class="row my-4">
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-center"><strong>Student Form</strong></h1>
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="fullName"><strong>Full Name</strong></label>
+            <input
+              type="text"
+              id="fullName"
+              formControlName="fullName"
+              class="form-control"
+            />
+            <strong
+              *ngIf="
+                formControls['fullName'].invalid &&
+                formControls['fullName'].touched
+              "
+              class="text-danger"
+            >
+              Name is required field</strong
+            >
+
+            <strong
+              *ngIf="
+                formControls['fullName'].dirty &&
+                formControls['fullName'].hasError('pattern')
+              "
+              class="text-danger"
+            >
+              Invalid Pattern</strong
+            >
+          </div>
+          <div class="form-group">
+            <label for="lastName"><strong>Last Name</strong></label>
+            <input
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+              class="form-control"
+            />
+            <strong
+              *ngIf="
+                formControls['lastName'].invalid &&
+                formControls['lastName'].touched
+              "
+              class="text-danger"
+            >
+              Last Name is required field</strong
+            >
+
+            <strong
+              *ngIf="
+                formControls['lastName'].dirty &&
+                formControls['lastName'].hasError('pattern')
+              "
+              class="text-danger"
+            >
+              Invalid Pattern</strong
+            >
+          </div>
+          <div class="form-group">
+            <label for="email"><strong>Email</strong></label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control"
+            />
+            <strong
+              *ngIf="
+                formControls['email'].invalid && formControls['email'].touched
+              "
+              class="text-danger"
+            >
+              Email is required field</strong
+            >
+            <strong
+              *ngIf="
+                formControls['email'].dirty &&
+                formControls['email'].hasError('pattern')
+              "
+              class="text-danger"
+            >
+              Invalid Pattern</strong
+            >
+          </div>
+          <div class="form-group">
+            <label for="contact"><strong>Contact</strong></label>
+            <input
+              type="text"
+              id="contact"
+              formControlName="contact"
+              class="form-control"
+            />
+            <strong
+              *ngIf="
+                formControls['contact'].invalid &&
+                formControls['contact'].touched
+              "
+              class="text-danger"
+            >
+              Contact is required field</strong
+            >
+
+            <strong
+              *ngIf="
+                formControls['contact'].dirty &&
+                formControls['contact'].hasError('pattern')
+              "
+              class="text-danger"
+            >
+              Invalid Pattern</strong
+            >
+          </div>
+          <button
+            *ngIf="!isInEditMode"
+            mat-raised-button
+            color="primary"
+            class="btn btn-block"
+          >
+            Add Student
+          </button>
+          <button
+            *ngIf="isInEditMode"
+            mat-raised-button
+            color="primary"
+            class="btn btn-block"
+          >
+            Update Student
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
